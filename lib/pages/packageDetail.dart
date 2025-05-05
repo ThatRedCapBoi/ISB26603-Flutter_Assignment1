@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_assignment_1/common/theme.dart';
+
 import 'product.dart';
 
 Icon icon(IconData icon) {
@@ -52,17 +54,17 @@ class _PackagedetailState extends State<Packagedetail> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+                SizedBox(height: 4),
+                // Price
+                Text(
+                  "RM ${widget.package.price.toStringAsFixed(2)}",
+                  style: Theme.of(context).textTheme.displayMedium,
+                ),
                 buildCardDetail(
                   icon: Icons.label,
                   color: Colors.blueAccent,
                   backgroundColor: Colors.blue[50],
                   text: widget.package.label,
-                ),
-                buildCardDetail(
-                  icon: Icons.monetization_on,
-                  color: Colors.green,
-                  backgroundColor: Colors.green[50],
-                  text: "RM${widget.package.price.toStringAsFixed(2)}",
                 ),
                 Divider(
                   color: Colors.blueGrey[100],
@@ -72,9 +74,15 @@ class _PackagedetailState extends State<Packagedetail> {
                   endIndent: 20,
                 ),
                 const SizedBox(height: 4),
-                const Text(
+                Text(
                   "Description",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.displaySmall,
+                ),
+                SizedBox(height: 16),
+                Text(
+                  widget.package.description,
+                  style: const TextStyle(fontSize: 16, color: Colors.black54),
+                  textAlign: TextAlign.justify,
                 ),
               ],
             ),

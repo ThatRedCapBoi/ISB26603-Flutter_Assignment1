@@ -5,6 +5,7 @@ final appTheme = ThemeData(
     seedColor: Colors.deepOrange,
     primary: Colors.deepOrange,
     secondary: Colors.deepOrangeAccent,
+    tertiary: Colors.black,
   ),
   useMaterial3: true,
 
@@ -14,7 +15,17 @@ final appTheme = ThemeData(
     foregroundColor: Colors.white, // Set the AppBar text/icon color
   ),
   textTheme: TextTheme(
-    displayMedium: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-    bodySmall: TextStyle(fontSize: 16),
+    displayMedium: TextStyle(
+      fontSize: 24,
+      fontWeight: FontWeight.bold,
+      color: Color.fromARGB(218, 16, 67, 155),
+    ),
+    displaySmall: TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+      color: Color.fromARGB(218, 16, 67, 155),
+    ),
+    bodySmall: TextStyle(fontSize: 16, color: Color.fromARGB(218, 16, 67, 155)),
+    // Add more styles as needed
   ),
 );

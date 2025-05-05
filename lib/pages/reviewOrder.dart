@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_assignment_1/common/theme.dart';
 
 class ReviewPage extends StatefulWidget {
   final List<String> orderedItems; // List of ordered items to review
@@ -109,6 +110,15 @@ class ReviewPageState extends State<ReviewPage> {
             ElevatedButton(
               onPressed: _submitAllReviews,
               child: const Text('Submit All Reviews'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Theme.of(context).colorScheme.primary,
+                foregroundColor: Theme.of(context).colorScheme.onPrimary,
+              ),
+            ),
+            const SizedBox(height: 16),
+            Text(
+              "Note: You can only submit reviews after rating all items.",
+              style: TextStyle(color: Colors.black),
             ),
           ],
         ),

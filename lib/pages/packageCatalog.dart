@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_assignment_1/common/theme.dart';
+
 import 'package:mobile_assignment_1/pages/packageDetail.dart';
 import 'product.dart';
 
@@ -31,7 +33,7 @@ class PackageCatalogPage extends StatelessWidget {
                 ),
               );
             },
-            child: buildProductCard(Package.samples[index]),
+            child: buildProductCard(context, Package.samples[index]),
           );
         },
       ),
@@ -39,7 +41,7 @@ class PackageCatalogPage extends StatelessWidget {
   }
 }
 
-Widget buildProductCard(Package package) {
+Widget buildProductCard(BuildContext context, Package package) {
   return Card(
     elevation: 3,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
@@ -47,23 +49,60 @@ Widget buildProductCard(Package package) {
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Image(image: AssetImage(package.imageUrl)),
+          Expanded(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image(
+                image: AssetImage(package.imageUrl),
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
           const SizedBox(height: 8.0),
           Text(
             package.name,
-            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
           ),
           const SizedBox(height: 4.0),
           Text(
-            package.label,
-            style: TextStyle(fontSize: 14.0, color: Colors.grey[600]),
+            "RM${package.price.toStringAsFixed(2)}",
+            style: Theme.of(context).textTheme.displayMedium,
           ),
-          const SizedBox(height: 4.0),
+          SizedBox(height: 8.0),
+          buildCardDetail(
+            icon: Icons.label,
+            color: Colors.blueAccent,
+            backgroundColor: Colors.blue[50],
+            text: package.label,
+          ),
         ],
       ),
+    ),
+  );
+}
+
+Widget buildCardDetail({
+  required IconData icon,
+  required Color color,
+  required Color? backgroundColor,
+  required String text,
+}) {
+  return Container(
+    padding: const EdgeInsets.all(8.0),
+    margin: const EdgeInsets.all(8.0),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(16.0),
+      border: Border.all(color: color),
+      color: backgroundColor,
+    ),
+    child: Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(icon, color: color),
+        const SizedBox(width: 8),
+        Text(text, style: const TextStyle(fontSize: 16)),
+      ],
     ),
   );
 }

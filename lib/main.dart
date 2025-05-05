@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_assignment_1/pages/orderConfirmation.dart';
-import 'package:mobile_assignment_1/pages/orderPayment.dart';
 import 'package:mobile_assignment_1/pages/about.dart';
 import 'package:mobile_assignment_1/pages/packageCatalog.dart';
 import 'package:mobile_assignment_1/pages/reservationDetail.dart';
+import 'package:mobile_assignment_1/pages/orderPayment.dart';
+import 'package:mobile_assignment_1/pages/reviewOrder.dart';
 
-import 'common/theme.dart';
+import 'package:mobile_assignment_1/common/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,6 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // # App Bottom Navigation bar
       // appBar: AppBar(title: Text(widget.title)),
       // body: Column(
       //   crossAxisAlignment: CrossAxisAlignment.start,
@@ -144,12 +145,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return OrderConfirmationPage();
+                      return ReviewPage(
+                        orderedItems: ["Package 1", "Package 2"],
+                      );
                     },
                   ),
                 );
               },
-              child: Text("Order Confirmation"),
+              child: Text("Order Review"),
             ),
           ],
         ),
