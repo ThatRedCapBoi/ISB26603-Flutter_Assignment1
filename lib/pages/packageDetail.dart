@@ -7,7 +7,7 @@ Icon icon(IconData icon) {
 
 class Packagedetail extends StatefulWidget {
   final Package package;
-  const Packagedetail({Key? key, required this.package}) : super(key: key);
+  const Packagedetail({super.key, required this.package});
 
   @override
   _PackagedetailState createState() {
@@ -46,7 +46,7 @@ class _PackagedetailState extends State<Packagedetail> {
                 // Full Name
                 const SizedBox(height: 4),
                 Text(
-                  "${widget.package.name}",
+                  widget.package.name,
                   style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -62,7 +62,7 @@ class _PackagedetailState extends State<Packagedetail> {
                   icon: Icons.monetization_on,
                   color: Colors.green,
                   backgroundColor: Colors.green[50],
-                  text: "\RM${widget.package.price.toStringAsFixed(2)}",
+                  text: "RM${widget.package.price.toStringAsFixed(2)}",
                 ),
                 Divider(
                   color: Colors.blueGrey[100],
