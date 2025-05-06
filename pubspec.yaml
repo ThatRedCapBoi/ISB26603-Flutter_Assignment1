@@ -30,7 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_rating_bar: ^4.0.0 # Make sure you use the latest version available
+  intl: ^0.20.2 # Date Formatting
+  # flutter_rating_bar: ^4.0.0 # Make sure you use the latest version available
 
 
 
