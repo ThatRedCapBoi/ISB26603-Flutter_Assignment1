@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_assignment_1/common/theme.dart';
+
 import 'package:mobile_assignment_1/pages/about.dart';
 import 'package:mobile_assignment_1/pages/packageCatalog.dart';
 import 'package:mobile_assignment_1/pages/reservationDetail.dart';
 import 'package:mobile_assignment_1/pages/orderPayment.dart';
 import 'package:mobile_assignment_1/pages/reviewOrder.dart';
-
-import 'package:mobile_assignment_1/common/theme.dart';
 
 void main() {
   runApp(const MyApp());

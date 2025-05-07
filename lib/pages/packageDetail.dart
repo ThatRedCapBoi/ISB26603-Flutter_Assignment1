@@ -45,7 +45,7 @@ class _PackagedetailState extends State<Packagedetail> {
                     ),
                   ),
                 ),
-                // Full Name
+                // Product Name
                 const SizedBox(height: 4),
                 Text(
                   widget.package.name,
@@ -75,12 +75,20 @@ class _PackagedetailState extends State<Packagedetail> {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  "Description",
+                  "Details",
                   style: Theme.of(context).textTheme.displaySmall,
+                ),
+                SizedBox(height: 8),
+                Text(
+                  widget.package.detail[0].items,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 SizedBox(height: 16),
                 Text(
-                  widget.package.description,
+                  widget.package.detail[0].description,
                   style: const TextStyle(fontSize: 16, color: Colors.black54),
                   textAlign: TextAlign.justify,
                 ),
