@@ -7,16 +7,7 @@ class OrderPaymentPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Order Payment')),
-      body: Center(
-        child: Text(
-          'Order Payment Page',
-          style: TextStyle(color: Theme.of(context).colorScheme.primary),
-        ),
-      ),
+      body: Center(),
     );
   }
-}
-
-void main() {
-  runApp(MaterialApp(home: OrderPaymentPage()));
 }

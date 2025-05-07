@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'packageDetail.dart'; // For accessing PackageDetail
-import 'product.dart'; // For accessing the Package class and categoryToString function
+
+import 'package:mobile_assignment_1/main.dart';
+import 'packageDetail.dart';
+import 'package:mobile_assignment_1/model/product.dart';
 
 class MealPage extends StatelessWidget {
   const MealPage({super.key});
@@ -45,6 +47,7 @@ class MealPage extends StatelessWidget {
           );
         },
       ),
+      floatingActionButton: buildFloatingActionButton(context),
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_assignment_1/common/theme.dart';
 
-import 'product.dart';
+import 'package:mobile_assignment_1/model/product.dart';
 
 Icon icon(IconData icon) {
   return Icon(icon, color: Colors.black26);

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_assignment_1/common/theme.dart';
 
+import 'package:mobile_assignment_1/main.dart';
 import 'package:mobile_assignment_1/pages/packageDetail.dart';
-import 'package:mobile_assignment_1/pages/product.dart'; // For accessing the Package class
+import 'package:mobile_assignment_1/model/product.dart';
 
 class SidesPage extends StatelessWidget {
   const SidesPage({super.key});
@@ -47,6 +48,7 @@ class SidesPage extends StatelessWidget {
           );
         },
       ),
+      floatingActionButton: buildFloatingActionButton(context),
     );
   }
 }

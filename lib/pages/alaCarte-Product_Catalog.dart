@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'packageDetail.dart'; // For accessing PackageDetail
-import 'product.dart'; // For accessing the Package class and categoryToString function
+
+import 'package:mobile_assignment_1/main.dart';
+import 'packageDetail.dart';
+import 'package:mobile_assignment_1/model/product.dart';
 
 class AlaCartePage extends StatelessWidget {
   const AlaCartePage({super.key});
@@ -46,6 +48,7 @@ class AlaCartePage extends StatelessWidget {
           );
         },
       ),
+      floatingActionButton: buildFloatingActionButton(context),
     );
   }
 }

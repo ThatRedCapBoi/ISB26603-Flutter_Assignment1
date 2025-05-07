@@ -37,37 +37,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // # App Bottom Navigation bar
-      // appBar: AppBar(title: Text(widget.title)),
-      // body: Column(
-      //   crossAxisAlignment: CrossAxisAlignment.start,
-      //   children: [
-      //     Expanded(child: Container()), // Placeholder for body content
-      //   ],
-      // ),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   items: const [
-      //     BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.settings),
-      //       label: 'Settings',
-      //     ),
-      //     BottomNavigationBarItem(icon: Icon(Icons.person), label: 'About'),
-      //   ],
-      //   onTap: (index) {
-      //     switch (index) {
-      //       case 0:
-      //         Navigator.pushNamed(context, '/OrderConfirmation');
-      //         break;
-      //       case 1:
-      //         Navigator.pushNamed(context, '/packageOrder');
-      //         break;
-      //       case 2:
-      //         Navigator.pushNamed(context, '/about');
-      //         break;
-      //     }
-      //   },
-      // ),
       appBar: AppBar(title: Text(widget.title)),
       backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       body: Center(
@@ -136,7 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 );
               },
-              child: Text("Order Details"),
+              child: Text("Order Payment"),
             ),
             SizedBox(height: 16),
             ElevatedButton(
@@ -157,6 +126,20 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+      floatingActionButton: buildFloatingActionButton(context),
     );
   }
+}
+
+Widget buildFloatingActionButton(BuildContext context) {
+  return FloatingActionButton(
+    onPressed: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const OrderPaymentPage()),
+      );
+    },
+    backgroundColor: Theme.of(context).colorScheme.primary,
+    child: const Icon(Icons.payment, color: Colors.white),
+  );
 }

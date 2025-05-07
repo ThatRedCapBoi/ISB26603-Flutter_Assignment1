@@ -9,6 +9,7 @@ Display the information & Validate the input
     - Dine-in Start and End Time
     - Additional Request Field (Birthday Celebration/Decoration)
 
+---
 
 Page 2 - Menu Package Catalog
 Display the basic and details information
@@ -16,9 +17,15 @@ Display the basic and details information
     - List of menu package images
     - Details of Menu package
 
+---
+
+
 Page 3 - Order Checkout page 
 Display the information & Validate the input 
     - Menu package item selected, detail view of the selected menu package, input discount code,  overall total discount, overall total cost   
+
+---
+
 
 Page 4 - Order Confirmation & Review page
 Display the information & accepting input

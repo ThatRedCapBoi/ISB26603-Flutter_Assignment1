@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_assignment_1/common/theme.dart';
 
+import 'package:mobile_assignment_1/main.dart';
 import 'package:mobile_assignment_1/pages/packageDetail.dart';
-import 'product.dart';
+import 'package:mobile_assignment_1/model/product.dart';
 
 import 'meal-Product_Catalog.dart';
 import 'alaCarte-Product_Catalog.dart';
 import 'sideMeal-Product_Catalog.dart';
+import 'orderPayment.dart'; // Import the OrderPayment page
 
 class PackageCatalogPage extends StatelessWidget {
   const PackageCatalogPage({super.key});
@@ -86,6 +88,7 @@ class PackageCatalogPage extends StatelessWidget {
           ),
         ],
       ),
+      floatingActionButton: buildFloatingActionButton(context),
     );
   }
 }
