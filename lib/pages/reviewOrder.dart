@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_assignment_1/common/theme.dart';
 
 class ReviewPage extends StatefulWidget {
   final List<String> orderedItems; // List of ordered items to review

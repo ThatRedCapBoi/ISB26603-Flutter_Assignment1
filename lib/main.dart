@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_assignment_1/common/theme.dart';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:mobile_assignment_1/pages/about.dart';
 import 'package:mobile_assignment_1/pages/packageCatalog.dart';
 import 'package:mobile_assignment_1/pages/reservationDetail.dart';
@@ -13,6 +15,13 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
+  // Functions
+  Future<void> saveData(String orderDetails) async {
+    final prefs = await SharedPreferences.getInstance();
+    // await prefs.setString('reservationDetails', reservationDetails);
+    await prefs.setString('orderDetails', orderDetails);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -140,6 +149,6 @@ Widget buildFloatingActionButton(BuildContext context) {
       );
     },
     backgroundColor: Theme.of(context).colorScheme.primary,
-    child: const Icon(Icons.payment, color: Colors.white),
+    child: const Icon(Icons.shopping_cart_rounded, color: Colors.white),
   );
 }

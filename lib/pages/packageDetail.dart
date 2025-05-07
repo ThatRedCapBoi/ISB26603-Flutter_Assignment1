@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_assignment_1/common/theme.dart';
+import 'package:mobile_assignment_1/main.dart';
 
 import 'package:mobile_assignment_1/model/product.dart';
+import 'package:mobile_assignment_1/pages/packageCatalog.dart';
+
+import 'package:mobile_assignment_1/model/order.dart';
 
 Icon icon(IconData icon) {
   return Icon(icon, color: Colors.black26);
@@ -45,6 +48,7 @@ class _PackagedetailState extends State<Packagedetail> {
                     ),
                   ),
                 ),
+                SizedBox(height: 16),
                 // Product Name
                 const SizedBox(height: 4),
                 Text(
@@ -97,31 +101,43 @@ class _PackagedetailState extends State<Packagedetail> {
           ),
         ),
       ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: buildAddToCartButton(context),
+      ),
     );
   }
+}
 
-  Widget buildCardDetail({
-    required IconData icon,
-    required Color color,
-    required Color? backgroundColor,
-    required String text,
-  }) {
-    return Container(
-      padding: const EdgeInsets.all(8.0),
-      margin: const EdgeInsets.all(8.0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16.0),
-        border: Border.all(color: color),
-        color: backgroundColor,
+Widget buildAddToCartButton(BuildContext context) {
+  return Container(
+    margin: const EdgeInsets.only(top: 16.0),
+    child: ElevatedButton(
+      onPressed: () {
+        // Add to cart logic here
+        // final orderDetails = widget.package.name;
+        // saveData(orderDetails);
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("Added to Cart"),
+            duration: Duration(milliseconds: 1300),
+          ),
+        );
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const PackageCatalogPage()),
+        );
+      },
+      child: const Text("Add to Cart"),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        foregroundColor: Colors.white,
+        padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
       ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, color: color),
-          const SizedBox(width: 8),
-          Text(text, style: const TextStyle(fontSize: 16)),
-        ],
-      ),
-    );
-  }
+    ),
+  );
 }
