@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart'; // For date and time formatting
 
+import 'package:mobile_assignment_1/pages/packageCatalog.dart';
+
 class ReservationPage extends StatefulWidget {
   const ReservationPage({super.key});
 
@@ -30,7 +32,9 @@ class _ReservationPageState extends State<ReservationPage> {
     );
     if (picked != null) {
       setState(() {
-        _reservationDateController.text = DateFormat('yyyy-MM-dd').format(picked);
+        _reservationDateController.text = DateFormat(
+          'yyyy-MM-dd',
+        ).format(picked);
       });
     }
   }
@@ -98,7 +102,8 @@ class _ReservationPageState extends State<ReservationPage> {
                   if (value == null || value.isEmpty) {
                     return 'Please enter your phone number';
                   }
-                  if (!RegExp(r'^[0-9]+$').hasMatch(value)) { // Validation Phone Number Format
+                  if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
+                    // Validation Phone Number Format
                     return 'Please enter a valid phone number';
                   }
                   return null;
@@ -112,7 +117,10 @@ class _ReservationPageState extends State<ReservationPage> {
                   if (value == null || value.isEmpty) {
                     return 'Please enter your email';
                   }
-                  if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) { // Validation Email Format
+                  if (!RegExp(
+                    r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                  ).hasMatch(value)) {
+                    // Validation Email Format
                     return 'Please enter a valid email address';
                   }
                   return null;
@@ -124,7 +132,9 @@ class _ReservationPageState extends State<ReservationPage> {
                   Expanded(
                     child: TextFormField(
                       controller: _reservationDateController,
-                      decoration: const InputDecoration(labelText: 'Reservation Date'),
+                      decoration: const InputDecoration(
+                        labelText: 'Reservation Date',
+                      ),
                       readOnly: true,
                       onTap: () => _selectDate(context),
                       validator: (value) {
@@ -139,7 +149,9 @@ class _ReservationPageState extends State<ReservationPage> {
                   Expanded(
                     child: TextFormField(
                       controller: _reservationTimeController,
-                      decoration: const InputDecoration(labelText: 'Reservation Time'),
+                      decoration: const InputDecoration(
+                        labelText: 'Reservation Time',
+                      ),
                       readOnly: true,
                       onTap: () => _selectTime(context),
                       validator: (value) {
@@ -164,7 +176,9 @@ class _ReservationPageState extends State<ReservationPage> {
                           border: OutlineInputBorder(),
                         ),
                         child: Text(
-                          _dineInStartTime == null ? 'Select Time' : _dineInStartTime!.format(context),
+                          _dineInStartTime == null
+                              ? 'Select Time'
+                              : _dineInStartTime!.format(context),
                         ),
                       ),
                     ),
@@ -172,14 +186,19 @@ class _ReservationPageState extends State<ReservationPage> {
                   const SizedBox(width: 10),
                   Expanded(
                     child: DropdownButtonFormField<int>(
-                      decoration: const InputDecoration(labelText: 'Dine-in Duration (hours)'),
+                      decoration: const InputDecoration(
+                        labelText: 'Dine-in Duration (hours)',
+                      ),
                       value: _dineInDuration,
-                      items: [3, 4, 5]
-                          .map((duration) => DropdownMenuItem(
-                                value: duration,
-                                child: Text('$duration hours'),
-                              ))
-                          .toList(),
+                      items:
+                          [3, 4, 5]
+                              .map(
+                                (duration) => DropdownMenuItem(
+                                  value: duration,
+                                  child: Text('$duration hours'),
+                                ),
+                              )
+                              .toList(),
                       onChanged: (value) {
                         setState(() {
                           _dineInDuration = value;
@@ -197,12 +216,16 @@ class _ReservationPageState extends State<ReservationPage> {
               ),
               TextFormField(
                 controller: _additionalRequestsController,
-                decoration: const InputDecoration(labelText: 'Additional Requests (Optional)'),
+                decoration: const InputDecoration(
+                  labelText: 'Additional Requests (Optional)',
+                ),
                 maxLines: 2,
               ),
               TextFormField(
                 controller: _numberOfGuestsController,
-                decoration: const InputDecoration(labelText: 'Number of Guests'),
+                decoration: const InputDecoration(
+                  labelText: 'Number of Guests',
+                ),
                 keyboardType: TextInputType.number,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -225,53 +248,65 @@ class _ReservationPageState extends State<ReservationPage> {
                     String email = _emailController.text;
                     String reservationDate = _reservationDateController.text;
                     String reservationTime = _reservationTimeController.text;
-                    String? dineInStartTimeFormatted = _dineInStartTime?.format(context);
-                    int? dineInEndTime = _dineInStartTime != null && _dineInDuration != null
-                        ? _dineInStartTime!.hour + _dineInDuration!
-                        : null;
-                    String additionalRequests = _additionalRequestsController.text;
-                    int numberOfGuests = int.parse(_numberOfGuestsController.text);
+                    String? dineInStartTimeFormatted = _dineInStartTime?.format(
+                      context,
+                    );
+                    int? dineInEndTime =
+                        _dineInStartTime != null && _dineInDuration != null
+                            ? _dineInStartTime!.hour + _dineInDuration!
+                            : null;
+                    String additionalRequests =
+                        _additionalRequestsController.text;
+                    int numberOfGuests = int.parse(
+                      _numberOfGuestsController.text,
+                    );
 
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const PackageCatalogPage(),
+                      ),
+                    );
                     // You can now use this data to save to a database or display it.
                     // For this example, we'll just display it.
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          title: const Text('Reservation Details'),
-                          content: SingleChildScrollView(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text('Name: $name'),
-                                Text('Address: $address'),
-                                Text('Phone: $phone'),
-                                Text('Email: $email'),
-                                Text('Reservation Date: $reservationDate'),
-                                Text('Reservation Time: $reservationTime'),
-                                if (dineInStartTimeFormatted != null)
-                                  Text('Dine-in Start Time: $dineInStartTimeFormatted'),
-                                if (_dineInDuration != null)
-                                  Text('Dine-in Duration: ${_dineInDuration} hours'),
-                                if (dineInEndTime != null)
-                                  Text('Approximate Dine-in End Time: $dineInEndTime:00'),
-                                if (additionalRequests.isNotEmpty)
-                                  Text('Additional Requests: $additionalRequests'),
-                                Text('Number of Guests: $numberOfGuests'),
-                              ],
-                            ),
-                          ),
-                          actions: <Widget>[
-                            TextButton(
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                              child: const Text('OK'),
-                            ),
-                          ],
-                        );
-                      },
-                    );
+                    // showDialog(
+                    //   context: context,
+                    //   builder: (context) {
+                    //     return AlertDialog(
+                    //       title: const Text('Reservation Details'),
+                    //       content: SingleChildScrollView(
+                    //         child: Column(
+                    //           crossAxisAlignment: CrossAxisAlignment.start,s
+                    //           children: <Widget>[
+                    //             Text('Name: $name'),
+                    //             Text('Address: $address'),
+                    //             Text('Phone: $phone'),
+                    //             Text('Email: $email'),
+                    //             Text('Reservation Date: $reservationDate'),
+                    //             Text('Reservation Time: $reservationTime'),
+                    //             if (dineInStartTimeFormatted != null)
+                    //               Text('Dine-in Start Time: $dineInStartTimeFormatted'),
+                    //             if (_dineInDuration != null)
+                    //               Text('Dine-in Duration: ${_dineInDuration} hours'),
+                    //             if (dineInEndTime != null)
+                    //               Text('Approximate Dine-in End Time: $dineInEndTime:00'),
+                    //             if (additionalRequests.isNotEmpty)
+                    //               Text('Additional Requests: $additionalRequests'),
+                    //             Text('Number of Guests: $numberOfGuests'),
+                    //           ],
+                    //         ),
+                    //       ),
+                    //       actions: <Widget>[
+                    //         TextButton(
+                    //           onPressed: () {
+                    //             Navigator.of(context).pop();
+                    //           },
+                    //           child: const Text('OK'),
+                    //         ),
+                    //       ],
+                    //     );
+                    //   },
+                    // );
                   }
                 },
                 child: const Text('Make Reservation'),
