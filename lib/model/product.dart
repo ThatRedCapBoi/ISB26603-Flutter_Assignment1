@@ -21,7 +21,7 @@ class Package {
       'Meal',
       MenuCategory.meal,
       18.50,
-      'assets/placeholder.png',
+      'assets/ultimatechick.jpg',
       [
         Detail(
           'In the Set: 1x Big Taco, 1x Soft Drink 1x Nacho',
@@ -34,7 +34,7 @@ class Package {
       'Meal',
       MenuCategory.meal,
       21.50,
-      'assets/placeholder.png',
+      'assets/tacosupreme.jpg',
       [
         Detail(
           'In the Set: 2x Taco Supreme, 1x Soft Drink 1x Nacho',
@@ -47,7 +47,7 @@ class Package {
       'Meal',
       MenuCategory.meal,
       20.90,
-      'assets/placeholder.png',
+      'assets/chickstar.jpg',
       [
         Detail(
           'In the Set: 1x Big Chicken Wrap, 1x Soft Drink 1x Nacho',
@@ -60,7 +60,7 @@ class Package {
       'Meal',
       MenuCategory.meal,
       23.50,
-      'assets/placeholder.png',
+      'assets/grilledburrito.jpg',
       [
         Detail(
           'In the Set: 1x Grilled Tortilla, 1x Soft Drink 1x Nacho',
@@ -73,7 +73,7 @@ class Package {
       'Ala Carte',
       MenuCategory.alaCarte,
       12.78,
-      'assets/placeholder.png',
+      'assets/crunchwrap.jpg',
       [
         Detail(
           'In the Set: Toasted Tortilla Wrap with Beef',
@@ -86,7 +86,7 @@ class Package {
       'Ala Carte',
       MenuCategory.alaCarte,
       15.98,
-      'assets/placeholder.png',
+      'assets/kickin.jpg',
       [
         Detail(
           'In the Set: Spicy Chicken Soft Tacos',
@@ -99,7 +99,7 @@ class Package {
       'Ala Carte',
       MenuCategory.alaCarte,
       13.58,
-      'assets/placeholder.png',
+      'assets/quesadilla.jpg',
       [
         Detail(
           'In the Set: Grilled Cheesy Chicken Slices',
@@ -113,7 +113,7 @@ class Package {
       'Ala Carte',
       MenuCategory.alaCarte,
       12.50,
-      'assets/placeholder.png',
+      'assets/bellbowl.jpg',
       [
         Detail(
           'In the Set: 1x Loaded Rice Bowl',
@@ -128,7 +128,7 @@ class Package {
       'Sides',
       MenuCategory.sides,
       9.04,
-      'assets/placeholder.png',
+      'assets/nachofries.jpg',
       [
         Detail(
           'In the Set: Crispy seasoned fries, 1x Cheese dip',
@@ -142,7 +142,7 @@ class Package {
       'Sides',
       MenuCategory.sides,
       7.84,
-      'assets/placeholder.png',
+      'assets/cheesy.jpg',
       [
         Detail(
           'In the Set: Tortilla chips, 1x Cheese dip',
@@ -156,7 +156,7 @@ class Package {
       'Sides',
       MenuCategory.sides,
       4.90,
-      'assets/placeholder.png',
+      'assets/cinamon.jpg',
       [
         Detail(
           'In the Set: Sweet cinnamon twists',
@@ -170,7 +170,7 @@ class Package {
       'Sides',
       MenuCategory.sides,
       6.90,
-      'assets/placeholder.png',
+      'assets/chocodilla.jpg',
       [
         Detail(
           'In the Set: Grilled chocolate quesadilla',

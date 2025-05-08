@@ -19,6 +19,7 @@ class OrderPaymentPage extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
             ),
             const SizedBox(height: 20),
+
             Expanded(
               child: ListView(
                 children: [
@@ -33,13 +34,13 @@ class OrderPaymentPage extends StatelessWidget {
                   const Divider(),
                   ListTile(
                     title: const Text('Total Discount '),
-                    trailing: const Text('\RM0.00'),
+                    trailing: const Text('\RM1.28'),
                   ),
 
                   ListTile(
                     title: const Text('Total Payment'),
                     trailing: const Text(
-                      '\RM31.28',
+                      '\RM30.00',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
