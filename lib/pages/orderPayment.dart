@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_assignment_1/pages/reviewOrder.dart';
-import 'package:mobile_assignment_1/pages/reviewOrder.dart';
 
 class OrderPaymentPage extends StatelessWidget {
   const OrderPaymentPage({super.key});
