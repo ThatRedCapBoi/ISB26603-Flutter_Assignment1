@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_assignment_1/main.dart';
 
-import 'package:mobile_assignment_1/model/product.dart';
-import 'package:mobile_assignment_1/pages/packageCatalog.dart';
+import 'package:mobile_assignment_1/services/sqliteDatabase.dart';
 
 import 'package:mobile_assignment_1/model/order.dart';
+
+import 'package:mobile_assignment_1/model/product.dart';
+import 'package:mobile_assignment_1/pages/packageCatalog.dart';
 
 Icon icon(IconData icon) {
   return Icon(icon, color: Colors.black26);
@@ -21,6 +23,10 @@ class Packagedetail extends StatefulWidget {
 }
 
 class _PackagedetailState extends State<Packagedetail> {
+  final Sqlitedatabase _database = Sqlitedatabase.instance;
+
+  String? _order = null;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +49,7 @@ class _PackagedetailState extends State<Packagedetail> {
                     borderRadius: BorderRadius.circular(20.0),
                     child: Image(
                       image: AssetImage(widget.package.imageUrl),
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fill,
                       alignment: Alignment.topCenter,
                     ),
                   ),
@@ -107,37 +113,62 @@ class _PackagedetailState extends State<Packagedetail> {
       ),
     );
   }
-}
 
-Widget buildAddToCartButton(BuildContext context) {
-  return Container(
-    margin: const EdgeInsets.only(top: 16.0),
-    child: ElevatedButton(
-      onPressed: () {
-        // Add to cart logic here
-        // final orderDetails = widget.package.name;
-        // saveData(orderDetails);
+  Widget buildAddToCartButton(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(top: 16.0),
+      child: ElevatedButton(
+        onPressed: () async {
+          // Add to cart Order logic
+          final orderToAdd = Order(
+            id: 0, // Placeholder ID if the database auto-increments
+            productName: widget.package.name,
+            quantity: 1, // Default quantity
+            productPrice: widget.package.price,
+            imageUrl: widget.package.imageUrl,
+          );
 
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text("Added to Cart"),
-            duration: Duration(milliseconds: 1300),
+          try {
+            // Add the order to the database
+            _database.addOrder(orderToAdd);
+
+            if (mounted) {
+              // Show a success message
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text("Added to Cart"),
+                  duration: Duration(milliseconds: 1300),
+                ),
+              );
+
+              // Navigate back to the catalog page
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const PackageCatalogPage(),
+                ),
+              );
+            }
+          } catch (e) {
+            // Handle any errors
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text("Failed to add to cart: $e"),
+                duration: const Duration(milliseconds: 1300),
+              ),
+            );
+          }
+        },
+        child: const Text("Add to Cart"),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          foregroundColor: Colors.white,
+          padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
           ),
-        );
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const PackageCatalogPage()),
-        );
-      },
-      child: const Text("Add to Cart"),
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        foregroundColor: Colors.white,
-        padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.0),
         ),
       ),
-    ),
-  );
+    );
+  }
 }

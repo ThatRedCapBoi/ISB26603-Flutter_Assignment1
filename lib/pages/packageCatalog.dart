@@ -20,7 +20,7 @@ class PackageCatalogPage extends StatelessWidget {
         children: [
           Container(
             width: screenSize.width * 1,
-            height: screenSize.width * 0.2,
+            height: screenSize.width * 0.12,
             padding: const EdgeInsets.all(8.0),
             color: Colors.deepOrange[100],
             child: Row(
@@ -68,7 +68,7 @@ class PackageCatalogPage extends StatelessWidget {
               crossAxisCount: 2, // Number of cards per row
               crossAxisSpacing: 8.0, // Spacing between columns
               mainAxisSpacing: 8.0, // Spacing between rows
-              childAspectRatio: 0.65, // Adjust the aspect ratio of the cards
+              childAspectRatio: 0.7, // Adjust the aspect ratio of the cards
               children: List.generate(Package.samples.length, (index) {
                 return GestureDetector(
                   onTap: () {
@@ -105,7 +105,7 @@ Widget buildProductCard(BuildContext context, Package package) {
             aspectRatio: 3 / 2,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: Image.asset(package.imageUrl, fit: BoxFit.fitWidth),
+              child: Image.asset(package.imageUrl, fit: BoxFit.fill),
             ),
           ),
 
@@ -127,6 +127,7 @@ Widget buildProductCard(BuildContext context, Package package) {
             backgroundColor: Colors.blue[50],
             text: package.label,
           ),
+          SizedBox(height: 16.0),
         ],
       ),
     ),

@@ -1,7 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:mobile_assignment_1/common/theme.dart';
 
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'package:mobile_assignment_1/pages/about.dart';
 import 'package:mobile_assignment_1/pages/packageCatalog.dart';
@@ -9,19 +11,23 @@ import 'package:mobile_assignment_1/pages/reservationDetail.dart';
 import 'package:mobile_assignment_1/pages/orderPayment.dart';
 import 'package:mobile_assignment_1/pages/reviewOrder.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  sqfliteFfiInit();
+  databaseFactory = databaseFactoryFfi;
+
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // Functions
-  Future<void> saveData(String orderDetails) async {
-    final prefs = await SharedPreferences.getInstance();
-    // await prefs.setString('reservationDetails', reservationDetails);
-    await prefs.setString('orderDetails', orderDetails);
-  }
+  // // Functions
+  // Future<void> saveData(String orderDetails) async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   // await prefs.setString('reservationDetails', reservationDetails);
+  //   await prefs.setString('orderDetails', orderDetails);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -145,7 +151,7 @@ Widget buildFloatingActionButton(BuildContext context) {
     onPressed: () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const OrderPaymentPage()),
+        MaterialPageRoute(builder: (context) => OrderPaymentPage()),
       );
     },
     backgroundColor: Theme.of(context).colorScheme.primary,
